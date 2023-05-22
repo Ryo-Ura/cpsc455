@@ -1,12 +1,16 @@
-form {
+#itemForm {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   margin-bottom: 20px;
-  width: 50%;
-  align-items: center;
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
+}
+
+.form-wrapper{
+  margin: 0, auto;
+  width: 80%;
+  background-color: lightblue;
 }
 
 .form-row {
@@ -33,6 +37,10 @@ button {
   margin-right: 10px;
 }
 
+#delete-all-btn {
+  background-color: red;
+}
+
 .card {
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -54,6 +62,3 @@ button {
   max-width: 100%;
   height: auto;
 }
-
-
-
