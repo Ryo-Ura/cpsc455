@@ -9,66 +9,76 @@ items = JSON.parse(initialItemsString);
 
 
 itemForm.addEventListener('submit', (event) => {
-  event.preventDefault(); // Prevent form submission and page reload
+    event.preventDefault(); // Prevent form submission and page reload
 
-  // Retrieve form field values
-  console.log(event)
-  const itemName = document.getElementById('itemName');
-  const description = document.getElementById('description');
-  const price = document.getElementById('price');
-  const imageURL = document.getElementById('imageURL');
+    // Retrieve form field values
+    console.log(event)
+    const itemName = document.getElementById('itemName');
+    const description = document.getElementById('description');
+    const price = document.getElementById('price');
+    const imageURL = document.getElementById('imageURL');
 
-  var newItem = {
-    name: itemName.value,
-    description: description.value,
-    price: parseFloat(price.value),
-    imageURL: imageURL.value
-  };
+    var newItem = {
+        name: itemName.value,
+        description: description.value,
+        price: parseFloat(price.value),
+        imageURL: imageURL.value
+    };
 
-  items.push(newItem);
-  displayItem(newItem);
+    items.push(newItem);
+    displayItem(newItem);
 });
 
 deleteAllBtn.addEventListener('click', () => {
-  itemList.innerHTML = '';
-  items = [];
+    itemList.innerHTML = '';
+    items = [];
 });
 
 function displayItem(item) {
-  const itemList = document.getElementById('item-list');
+    const itemList = document.getElementById('item-list');
 
-  // Create a card element
-  const card = document.createElement('div');
-  card.classList.add('card');
+    // Create a card element
+    const card = document.createElement('div');
+    const itemName = document.createElement('h2');
+    const description = document.createElement('p');
+    const price = document.createElement('p');
+    const priceValue = parseFloat(item.price); // Convert price to a number
+    const image = document.createElement('img');
 
-  const itemName = document.createElement('h2');
-  itemName.textContent = item.itemName;
-  card.appendChild(itemName);
+    itemName.textContent = item.itemName;
+    description.textContent = item.description;
+    price.textContent = `Price: $${priceValue.toFixed(2)}`;
+    card.classList.add('card');
+    image.src = item.imageURL;
 
-  const description = document.createElement('p');
-  description.textContent = item.description;
-  card.appendChild(description);
+    card.appendChild(itemName);
+    card.appendChild(description);
+    card.appendChild(price);
+    card.appendChild(image);
+    price.addEventListener('click', () => {
+        sortByPriceDescending();
+    });
 
-  const price = document.createElement('p');
-  const priceValue = parseFloat(item.price); // Convert price to a number
-  price.textContent = `Price: $${priceValue.toFixed(2)}`;
-  card.appendChild(price);
-
-  const image = document.createElement('img');
-  image.src = item.imageURL;
-  card.appendChild(image);
-
-  itemList.appendChild(card);
+    itemList.appendChild(card);
 }
 
 function initializePage() {
-  items.forEach(function(item) {
-    displayItem(item);
-  });
+    items.forEach(function (item) {
+        displayItem(item);
+    });
 }
 
 window.addEventListener('load', initializePage);
 
+function sortByPriceAscending() {
+    const sortedItems = items.sort((a, b) => a.price - b.price);
+    itemList.innerHTML = '';
+    sortedItems.forEach(function (item) {
+        displayItem(item);
+    });
+}
+
+
 function clearForm() {
-  itemForm.reset();
+    itemForm.reset();
 }
