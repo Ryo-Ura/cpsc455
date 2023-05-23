@@ -19,10 +19,10 @@ itemForm.addEventListener('submit', (event) => {
   const imageURL = document.getElementById('imageURL');
 
   var newItem = {
-    name: itemName.value,
-    description: description.value,
-    price: parseFloat(price.value),
-    imageURL: imageURL.value
+      name: itemName.value,
+      description: description.value,
+      price: parseFloat(price.value),
+      imageURL: imageURL.value
   };
 
   items.push(newItem);
@@ -39,25 +39,32 @@ function displayItem(item) {
 
   // Create a card element
   const card = document.createElement('div');
-  card.classList.add('card');
-
+  const cardImage = document.createElement('div');
+  const cardContent = document.createElement('div');
   const itemName = document.createElement('h2');
-  itemName.textContent = item.itemName;
-  card.appendChild(itemName);
-
   const description = document.createElement('p');
-  description.textContent = item.description;
-  card.appendChild(description);
-
   const price = document.createElement('p');
   const priceValue = parseFloat(item.price); // Convert price to a number
-  price.textContent = `Price: $${priceValue.toFixed(2)}`;
-  card.appendChild(price);
-
   const image = document.createElement('img');
-  image.src = item.imageURL;
-  card.appendChild(image);
 
+  card.classList.add('card');
+  cardImage.classList.add('card-image');
+  cardContent.classList.add('card-content');
+  itemName.classList.add('item-name');
+  description.classList.add('description');
+  price.classList.add('price');
+  image.src = item.imageURL;
+
+  itemName.textContent = item.itemName;
+  description.textContent = item.description;
+  price.innerHTML = `<a href="#" onClick="handlePriceClick(event, ${priceValue})">Price: $${priceValue.toFixed(2)}</a>`;
+
+  cardImage.appendChild(image);
+  cardContent.appendChild(itemName);
+  cardContent.appendChild(description);
+  cardContent.appendChild(price);
+  card.appendChild(cardImage);
+  card.appendChild(cardContent);
   itemList.appendChild(card);
 }
 
@@ -71,4 +78,12 @@ window.addEventListener('load', initializePage);
 
 function clearForm() {
   itemForm.reset();
+}
+
+function handlePriceClick() {
+  const sortedItems = items.sort((a, b) => a.price - b.price);
+  itemList.innerHTML = '';
+  sortedItems.forEach(function (item) {
+      displayItem(item);
+  });
 }

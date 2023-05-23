@@ -39,26 +39,38 @@ button {
 
 #delete-all-btn {
   background-color: red;
+  margin: 10px;
 }
 
 .card {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
+  display: flex;
+  border: 1px solid #ddd;
   margin-bottom: 10px;
-  background-color: #f9f9f9;
 }
 
-.card h2 {
-  font-size: 20px;
-  margin-bottom: 5px;
+.card-image {
+  flex: 0 0 150px;
 }
 
-.card p {
-  margin-bottom: 5px;
+.card-content {
+  flex: 1;
+  padding: 10px;
 }
 
-.card img {
-  max-width: 100%;
+.card-content .item-name {
+  margin-top: 0;
+}
+
+.card-content .description {
+  margin-bottom: 10px;
+}
+
+.card-content .price {
+  font-weight: bold;
+}
+
+.card-image img {
+  width: 100%;
   height: auto;
 }
+
