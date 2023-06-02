@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
@@ -21,5 +21,20 @@ function App() {
     </div>
   );
 }
-
 export default App;
+
+// -src |
+//   -components |
+  //   -Form.js |
+  //   -ItemList.js |
+  //   -ItemDetail.js |
+//   -redux |
+  //   -actions.js |
+  //   -reducers.js |
+  //   -store.js |
+//   -assets |
+  //   -image1.jpg |
+  //   -image2.jpg |
+//   -index.js |
+//   -App.js |
+//   -index.css;
