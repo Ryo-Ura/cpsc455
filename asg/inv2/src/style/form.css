@@ -1,0 +1,38 @@
+#itemForm {
+  display: flex;
+  flex-flow: column wrap;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.form-wrapper{
+  margin: 0, auto;
+  width: 80%;
+  background-color: lightblue;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+label {
+  width: 120px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+input[type="text"],
+textarea,
+input[type="number"] {
+  flex: 1;
+  padding: 5px;
+}
+
+button {
+  margin-top: 10px;
+  margin-right: 10px;
+}

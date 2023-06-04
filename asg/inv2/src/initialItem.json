@@ -1,0 +1,14 @@
+[
+    {
+      "name": "Item 1",
+      "description": "Description 1",
+      "price": 10,
+      "imageURL": "https://slp-statics.astockcdn.net/static_assets/staging/22spring/free/browse-vector-categories-collections/Card4_399895799.jpg?width=580"
+    },
+    {
+      "name": "Item 2",
+      "description": "Description 1",
+      "price": 20,
+      "imageURL": "https://slp-statics.astockcdn.net/static_assets/staging/22spring/free/browse-vector-categories-collections/Card4_399895799.jpg?width=580"
+    }
+  ]
