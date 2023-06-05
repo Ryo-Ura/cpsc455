@@ -3,27 +3,18 @@ const initialItemsState = require("../initialItem.json");
 const itemListReducer = (state = initialItemsState, action) => {
   switch (action.type) {
     case "ADD_ITEM":
-      console.log(state)
-      // console.log(initialItemsState)
-      return {
-        ...state,
-        items: [...state.items, action.payload],
-      };
-    case "REMOVE_ITEM":
-      return [...state, action.payload];
+      // let action.payload.id = Date.now()
+      const newItems = [...state, action.payload]
+      return newItems;
+    case "DELETE_ITEM":
+      // console.log(state.id)
+      console.log(action.payload);
+      const updatedItems = state.filter(item => item.id !== action.payload.id);
+      return updatedItems;
     default:
       return state;
   }
 };
 
-// selectedItemReducer.js
-const selectedItemReducer = (state = null, action) => {
-  switch (action.type) {
-    case "OPEN_ITEM_DETAILS":
-      return action.payload;
-    default:
-      return state;
-  }
-};
 
-export { itemListReducer, selectedItemReducer };
+export { itemListReducer };

@@ -5,9 +5,9 @@ export const addItem = item => {
   };
 };
 
-export const removeItem = item => {
-  return {
-    type: "REMOVE_ITEM",
+export const deleteItem = (item) => {
+  return{
+    type: "DELETE_ITEM",
     payload: item,
   };
 };

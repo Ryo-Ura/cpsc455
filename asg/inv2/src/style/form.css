@@ -7,9 +7,18 @@
   border-radius: 5px;
 }
 
+.form-title{
+  text-align: center;
+}
+
+.form-container{
+  display: flex;
+  justify-content: center;
+}
+
 .form-wrapper{
   margin: 0, auto;
-  width: 80%;
+  width: 50%;
   background-color: lightblue;
 }
 
@@ -32,7 +41,8 @@ input[type="number"] {
   padding: 5px;
 }
 
-button {
+.submit-button {
+  width: 90px;
   margin-top: 10px;
   margin-right: 10px;
 }

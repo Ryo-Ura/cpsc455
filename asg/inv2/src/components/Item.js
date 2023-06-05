@@ -1,18 +1,39 @@
 import React from "react";
+import ItemDetails from "./ItemDetails";
+import { deleteItem } from "../actions";
 import { useDispatch } from "react-redux";
-import { openItemDetails } from "../actions";
 import '../style/card.css'
-const Item = ({ item }) => {
-  const dispatch = useDispatch();
 
+const Item = (props) => {
+  const [showDetails, setShowDetails] = React.useState(false);
+  const dispatch = useDispatch();
   const handleClick = () => {
-    dispatch(openItemDetails(item));
+    setShowDetails(!showDetails);
   };
+  const onDelete = (props) => {
+    dispatch(deleteItem(props));
+  };
+  console.log(props)
 
   return (
-    <div class="card" onClick={handleClick}>
-      <h2 class="item-name">{item.itemName}</h2>
-      <img src={item.image} alt={item.itemName} />
+    <div className="card">
+      <div className="card-content">
+        <h2 className="item-name">{props.itemName}</h2>
+        <img
+          className="card-image"
+          src={props.imageURL}
+          alt={props.itemName}
+          onClick={handleClick}
+        />
+        {showDetails && (
+          <div className="item-details-overlay">
+            <ItemDetails item={props} onClose={handleClick} />
+          </div>
+        )}
+        <button className="delete-button" onClick={() => onDelete(props)}>
+          Delete
+        </button>
+      </div>
     </div>
   );
 };
