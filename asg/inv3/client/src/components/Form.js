@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "../actions";
 import "../style/form.css";
 import { v4 as uuidv4 } from "uuid";
+import { addItemAsync } from "../redux/items/thunks";
 
 const Form = () => {
     const dispatch = useDispatch();
@@ -15,17 +15,14 @@ const Form = () => {
         e.preventDefault();
       
         // Create an item object from the form inputs
-        const newItem = {
+        const item = {
             itemName,
             description,
             price,
             imageURL,
             id: uuidv4(),
         };
-        console.log(newItem);
-
-        // Dispatch the addItem action with the new item
-        dispatch(addItem(newItem));
+        dispatch(addItemAsync(item));
     };
 
     const onClear = (e) => {
