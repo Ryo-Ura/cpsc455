@@ -11,20 +11,26 @@ const addItem = async (params) => {
         const errorMsg = data?.message;
         throw new Error(errorMsg);
     }
-
     return data;
 };
 
-const getItems = async () => {
-    const response = await fetch("http://localhost:3001/items", {
+const getItems = async (filter) => {
+    let url = "http://localhost:3001/items";
+    // Append filter query parameter if provided
+    if (filter) {
+        url += `?filter=${filter.filter}`;
+    }
+
+    const response = await fetch(url, {
         method: "GET",
     });
+
     return response.json();
 };
 
 const deleteItem = async (item) => {
-    const itemId = item.item.id
-    const response = await fetch(`http://localhost:3001/items/${itemId}`, {
+    const id = item.item.id;
+    const response = await fetch(`http://localhost:3001/items/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",

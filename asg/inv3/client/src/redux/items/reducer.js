@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { REQUEST_STATE } from "../utils";
 import { addItemAsync, deleteItemAsync, getItemsAsync } from "./thunks";
 
@@ -46,10 +46,14 @@ const itemsSlice = createSlice({
             })
             .addCase(deleteItemAsync.fulfilled, (state, action) => {
                 state.deleteItem = REQUEST_STATE.FULFILLED;
-                const index = state.list.findIndex(
-                    (item) =>
-                    item["id"].toString() === action.payload.toString()
-                );
+                const id = action.payload?.toString();
+                let index = -1;
+                for (let i = 0; i < current(state.list).length; i++) {
+                    let item = state.list[i];
+                    if (item._id === id) {
+                        index = i;
+                    }
+                }
                 if (index !== -1) {
                     state.list.splice(index, 1);
                 }

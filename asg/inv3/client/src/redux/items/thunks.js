@@ -4,8 +4,8 @@ import Service from "./service";
 
 export const getItemsAsync = createAsyncThunk(
     actionTypes.GET_ITEMS,
-    async () => {
-        return await Service.getItems();
+    async (filter) => {
+        return await Service.getItems(filter);
     }
 );
 

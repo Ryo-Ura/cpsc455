@@ -10,6 +10,8 @@ const Form = () => {
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [imageURL, setImage] = useState("");
+    const [manufacturer, setManufacturer] = useState("");
+    const [purchaser, setPurchaser] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,6 +22,8 @@ const Form = () => {
             description,
             price,
             imageURL,
+            manufacturer,
+            purchaser,
             id: uuidv4(),
         };
         dispatch(addItemAsync(item));
@@ -76,6 +80,24 @@ const Form = () => {
                             placeholder="Image URL"
                             value={imageURL}
                             onChange={(e) => setImage(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-row">
+                        <label htmlFor="manufacturer">manufacturer:</label>
+                        <input
+                            type="text"
+                            placeholder=""
+                            value={manufacturer}
+                            onChange={(e) => setManufacturer(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-row">
+                        <label htmlFor="purchaser">purchaser:</label>
+                        <input
+                            type="text"
+                            placeholder=""
+                            value={purchaser}
+                            onChange={(e) => setPurchaser(e.target.value)}
                         />
                     </div>
                     <button className="submit-button" type="submit">
