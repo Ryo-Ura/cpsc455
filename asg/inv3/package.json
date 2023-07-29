@@ -2,5 +2,12 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "mongoose": "^7.3.2"
+  },
+  "scripts": {
+    "install-server": "cd backend && npm install",
+    "start-server": "cd backend && node app.js",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start"
   }
 }
