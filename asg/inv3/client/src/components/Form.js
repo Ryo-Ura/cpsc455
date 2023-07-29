@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "../actions";
 import "../style/form.css";
 import { v4 as uuidv4 } from "uuid";
+import { addItemAsync } from "../redux/items/thunks";
 
 const Form = () => {
     const dispatch = useDispatch();
@@ -10,22 +10,23 @@ const Form = () => {
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [imageURL, setImage] = useState("");
+    const [manufacturer, setManufacturer] = useState("");
+    const [purchaser, setPurchaser] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
       
         // Create an item object from the form inputs
-        const newItem = {
+        const item = {
             itemName,
             description,
             price,
             imageURL,
+            manufacturer,
+            purchaser,
             id: uuidv4(),
         };
-        console.log(newItem);
-
-        // Dispatch the addItem action with the new item
-        dispatch(addItem(newItem));
+        dispatch(addItemAsync(item));
     };
 
     const onClear = (e) => {
@@ -79,6 +80,24 @@ const Form = () => {
                             placeholder="Image URL"
                             value={imageURL}
                             onChange={(e) => setImage(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-row">
+                        <label htmlFor="manufacturer">manufacturer:</label>
+                        <input
+                            type="text"
+                            placeholder=""
+                            value={manufacturer}
+                            onChange={(e) => setManufacturer(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-row">
+                        <label htmlFor="purchaser">purchaser:</label>
+                        <input
+                            type="text"
+                            placeholder=""
+                            value={purchaser}
+                            onChange={(e) => setPurchaser(e.target.value)}
                         />
                     </div>
                     <button className="submit-button" type="submit">

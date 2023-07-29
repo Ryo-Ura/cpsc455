@@ -6,6 +6,8 @@ const ItemDetails = ({ item, onClose, onDelete }) => {
             <h2>{item.itemName}</h2>
             <p>{item.description}</p>
             <p>Price: {item.price}</p>
+            <p>Purchaser: {item.purchaser}</p>
+            <p>manufacturer: {item.manufacturer}</p>
             <img
                 className="card-image"
                 src={item.imageURL}

@@ -1,6 +1,6 @@
 import React from "react";
 import ItemDetails from "./ItemDetails";
-import { deleteItem } from "../actions";
+import { deleteItemAsync } from "../redux/items/thunks";
 import { useDispatch } from "react-redux";
 import "../style/card.css";
 
@@ -11,9 +11,8 @@ const Item = (props) => {
         setShowDetails(!showDetails);
     };
     const onDelete = (props) => {
-        dispatch(deleteItem(props));
+        dispatch(deleteItemAsync(props));
     };
-    console.log(props);
 
     return (
         <div className="card">
